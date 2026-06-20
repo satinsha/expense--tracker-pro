@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker Pro</title>
+    <style>
+body{
+    <style>
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.container{
+    width: 700px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align: center;
+}
+
+input{
+    padding: 10px;
+    width: 250px;
+}
+
+button{
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+<div class="container">
+
+   <!-- all your existing HTML -->
+
+</div>
+</style>
+</head>
+<body>
+
+    <h1>Expense Tracker Pro</h1>
+
+    <input type="text" id="expenseName" placeholder="Expense Name">
+
+    <input type="number" id="expenseAmount" placeholder="Amount">
+
+    <button onclick="addExpense()">Add Expense</button>
+
+    <h2>Total: ₹<span id="total">0</span></h2>
+
+    <ul id="expenseList"></ul>
+
+
+<script>
+
+let total = 0;
+
+function addExpense() {
+
+    let name = document.getElementById("expenseName").value;
+    let amount = Number(document.getElementById("expenseAmount").value);
+    if(name === "" || amount <= 0){
+    alert("Please enter valid details");
+    return;
+}
+    total = total + amount;
+
+    document.getElementById("total").textContent = total;
+
+    let li = document.createElement("li");
+
+li.textContent = name + " - ₹" + amount + " ";
+
+let deleteBtn = document.createElement("button");
+
+deleteBtn.textContent = "Delete";
+
+deleteBtn.onclick = function() {
+
+    total = total - amount;
+
+    document.getElementById("total").textContent = total;
+
+    li.remove();
+};
+li.appendChild(deleteBtn);
+
+document.getElementById("expenseList").appendChild(li);
+
+     //upgrade 1: clear inputs
+    document.getElementById("expenseName").value = "";
+    
+    document.getElementById("expenseAmount").value = "";
+
+    
+}
+</script>
+    
+
+</body>
+</html>
